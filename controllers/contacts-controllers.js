@@ -10,10 +10,10 @@ const getAll = async (req, res) => {
 };
 
 const getById = async (req, res) => {
-    console.log(req.params.id);
-    const { id } = req.params;
+    console.log(req.params.contactId);
+    const { contactId } = req.params;
     // const result = await Movie.findOne({_id: id});
-    const result = await Contact.findById(id);
+    const result = await Contact.findById(contactId);
     console.log(result);
     if (!result) {
         throw HttpError(404, `Movie with id=${id} not found`);
@@ -28,20 +28,20 @@ const add = async (req, res) => {
 }
 
 const updateById = async (req, res) => {
-    const { id } = req.params;
-    const result = await Contact.findByIdAndUpdate(id, req.body, { new: true });
+    const { contactId } = req.params;
+    const result = await Contact.findByIdAndUpdate(contactId, req.body, { new: true });
     if (!result) {
-        throw HttpError(404, `Contact with id=${id} not found`);
+        throw HttpError(404, `Contact with id=${contactId} not found`);
     }
 
     res.json(result);
 }
 
 const deleteById = async (req, res) => {
-    const { id } = req.params;
-    const result = await Contact.findByIdAndDelete(id);
+    const { contactId } = req.params;
+    const result = await Contact.findByIdAndDelete(contactId);
     if (!result) {
-        throw HttpError(404, `Contact with id=${id} not found`);
+        throw HttpError(404, `Contact with id=${contactId} not found`);
     }
 
     res.json({
