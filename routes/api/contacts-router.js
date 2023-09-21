@@ -6,13 +6,15 @@ import * as contactSchemas from "../../models/Contact.js";
 
 import { validateBody } from "../../decorators/index.js";
 
-import { isValidId } from "../../middlewares/index.js";
+import { authenticate, isValidId } from "../../middlewares/index.js";
 
 const contactAddValidate = validateBody(contactSchemas.contactAddSchema);
 const contactUpdateFavoriteValidate = validateBody(contactSchemas.contactUpdateFavoriteSchema);
 
 
 const contactsRouter = express.Router();
+
+contactsRouter.use(authenticate)
 
 contactsRouter.get('/', contactsControllers.getAll);
 

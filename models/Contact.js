@@ -26,6 +26,11 @@ const contactSchema = new Schema({
     match: phoneRegexp,
     required: true,
   },
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: "user",
+    required: true,
+  }
 }, { versionKey: false, timestamps: true });
 
 contactSchema.post("save", handleSaveError);
