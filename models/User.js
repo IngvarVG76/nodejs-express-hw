@@ -29,6 +29,10 @@ const userSchema = new Schema({
     },
     token: {
         type: String,
+    },
+    avatar: {
+        type: String,
+        required: false,
     }
 }, { versionKey: false, timestamps: true })
 
@@ -43,6 +47,7 @@ export const userSignupSchema = Joi.object({
     email: Joi.string().pattern(emailRegexp).required(),
     password: Joi.string().min(6).required(),
     subscription: Joi.string().valid(...subscriptionTypes).required(),
+    avatar: Joi.string()
 })
 
 export const userSigninSchema = Joi.object({
