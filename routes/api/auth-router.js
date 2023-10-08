@@ -16,7 +16,7 @@ const userEmailValidate = validateBody(userSchemas.userEmailSchema);
 
 authRouter.post("/signup", upload.single("avatar"), userSignupValidate, authController.signup);
 
-authRouter.get("/verify/:verificationToken", authController.verify); 
+authRouter.get("/verify/:verificationToken", authController.verify);
 
 authRouter.post("/verify", userEmailValidate, authController.resendVerifyEmail);
 

@@ -40,13 +40,13 @@ const userSchema = new Schema({
     },
     verificationToken: {
         type: String,
-        // required: [true, 'Verify token is required'],
+        required: [true, 'Verify token is required'],
     }
 }, { versionKey: false, timestamps: true })
 
 userSchema.post("save", handleSaveError);
 
-userSchema.pre("findOneAndUpdate", runValidateAtUpdate);
+userSchema.pre("updateOne", runValidateAtUpdate);
 
 userSchema.post("findOneAndUpdate", handleSaveError);
 

@@ -69,7 +69,7 @@ const verify = async (req, res) => {
         throw HttpError(404);
     }
 
-    await User.findByIdAndUpdate(user._id, { verify: true, verificationToken: "" });
+    await User.findByIdAndUpdate(user._id, { verify: true, verificationToken: null });
 
     res.json({
         message: "Verification successful"
@@ -100,7 +100,6 @@ const resendVerifyEmail = async (req, res) => {
         message: "Verification email sent"
     })
 }
-
 
 const signin = async (req, res) => {
     const { email, password } = req.body;
